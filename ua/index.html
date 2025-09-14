@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPas - Ваш захищений менеджер нотаток, завдань та фінансів</title>
+    <link rel="stylesheet" href="../style.css">
+    <!-- Подключаем шрифты и иконки -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="#" class="logo">
+            <img src="../img/icon.png" alt="MPas Logo" class="logo-icon">
+            <span>MPas</span>
+        </a>
+        
+        <!-- ОБЩИЙ КОНТЕЙНЕР ДЛЯ НАВИГАЦИИ И ЯЗЫКОВ -->
+        <div class="nav-container">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#features">Можливості</a></li>
+                    <li><a href="#gallery">Скріншоти</a></li>
+                    <li><a href="#download">Завантажити</a></li>
+                </ul>
+            </nav>
+
+            <div class="lang-switcher">
+                <button class="lang-button">
+                    <i class="fas fa-globe"></i>
+                    <span>UA</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown">
+                    <a href="/index.html" class="lang-link">Русский</a>
+                    <a href="/ua/index.html" class="lang-link active">Українська</a>
+                </div>
+            </div>
+        </div>
+
+
+        <button class="burger-menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Організуйте все. Захистіть усе.</h1>
+                <p>MPas — це універсальний офлайн-менеджер для ваших нотаток, таблиць, завдань, календаря та фінансів з надійним шифруванням та доступом за майстер-паролем.</p>
+                <a href="#download" class="cta-button">Завантажити MPas v2.9.0</a>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <h2>Ключові можливості</h2>
+					<div class="features-grid">
+						<!-- Ряд 1 -->
+						<div class="feature-card">
+							<i class="fas fa-sticky-note"></i>
+							<h3>Нотатки</h3>
+							<p>Створюйте ієрархічні текстові нотатки з повним форматуванням, внутрішніми посиланнями та налаштуванням зовнішнього вигляду дерева.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-tasks"></i>
+							<h3>Завдання</h3>
+							<p>Менеджер завдань з ієрархією, пріоритетами, термінами, статусами та автоматичним відстеженням прогресу і протермінування.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-calendar-alt"></i>
+							<h3>Календар</h3>
+							<p>Ведіть щоденні нотатки та відстежуйте щорічні події. Зручний архів для швидкого пошуку за датами.</p>
+						</div>
+						
+						<!-- Ряд 2 -->
+						<div class="feature-card">
+							<i class="fas fa-table"></i>
+							<h3>Таблиці</h3>
+							<p>Працюйте з табличними даними як у Excel. Керуйте клітинками, змінюйте розміри та використовуйте буфер обміну.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-wallet"></i>
+							<h3>Фінанси</h3>
+							<p>Керуйте рахунками в різних валютах, відстежуйте доходи та витрати за категоріями, формуйте звіти за будь-який період.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-bell"></i>
+							<h3>Нагадування</h3>
+							<p>Гнучкий планувальник для створення одноразових та повторюваних подій з ненав'язливою системою пасивних сповіщень.</p>
+						</div>
+
+						<!-- Ряд 3 -->
+						<div class="feature-card">
+							<i class="fas fa-shield-alt"></i>
+							<h3>Безпека та Офлайн</h3>
+							<p>Усі дані шифруються алгоритмом AES-GCM вашим майстер-паролем. Програма працює повністю офлайн, без доступу до інтернету.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-save"></i>
+							<h3>Резервне копіювання</h3>
+							<p>Вбудована функція створення ZIP-архіву з усіма вашими даними та конфігурацією, а також система нагадувань про бекапи.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-search"></i>
+							<h3>Глобальний пошук</h3>
+							<p>Миттєво знаходьте потрібну інформацію за назвою або вмістом у всіх ваших нотатках за допомогою швидкого пошуку по всьому сховищу.</p>
+						</div>
+					</div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2>Галерея інтерфейсу</h2>
+                <div class="gallery-grid">
+                    <!-- Ряд 1 -->
+					<div class="gallery-item"><img src="../img/screenshot1.png" alt="Скріншот модуля Нотатки"></div>
+					<div class="gallery-item"><img src="../img/screenshot2.png" alt="Скріншот модуля Завдання"></div>
+					<div class="gallery-item"><img src="../img/screenshot3.png" alt="Скріншот модуля Фінанси"></div>
+					<!-- Ряд 2 -->
+					<div class="gallery-item"><img src="../img/screenshot4.png" alt="Скріншот модуля Календар"></div>
+					<div class="gallery-item"><img src="../img/screenshot5.png" alt="Скріншот модуля Таблиці"></div>
+					<div class="gallery-item"><img src="../img/screenshot6.png" alt="Скріншот вікна Налаштувань"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download">
+            <div class="container">
+                <h2>Готові навести лад у своїх справах?</h2>
+                <p>Завантажте MPas безкоштовно і почніть користуватися вже сьогодні.</p>
+                <a href="#" class="cta-button">Завантажити MPas v2.9.0 для Windows</a>
+                <p class="system-req">Підтримується Windows 10/11 (x64)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MPas. Усі права захищені.</p>
+            <p>Зв'язатися з розробником: <a href="https://t.me/measyprograms" target="_blank">Telegram-канал</a></p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

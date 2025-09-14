@@ -334,20 +334,32 @@ footer a:hover {
     z-index: 1001; /* Поверх всего */
 }
 
-/* --- Адаптивность для навигации --- */
+/* --- НАЧАЛО ИСПРАВЛЕНИЯ --- */
+/* Скрываем мобильный контейнер по умолчанию на больших экранах */
+.nav-mobile-container {
+    display: none;
+}
+/* --- КОНЕЦ ИСПРАВЛЕНИЯ --- */
+
+/* --- АДАПТИВНОСТЬ --- */
 @media (max-width: 768px) {
-    /* Стили из первого блока, которые мы перенесли сюда */
     h1 {
         font-size: 2.5rem;
     }
     h2 {
         font-size: 1.8rem;
     }
-    /* Это правило больше не нужно, так как мы используем бургер-меню */
-    /* header .container {
-        flex-direction: column;
-        gap: 10px;
-    } */
+
+    /* Скрываем основную навигацию и переключатель языков на десктопе */
+    .main-nav,
+    .lang-switcher {
+        display: none;
+    }
+
+    /* Показываем бургер-кнопку */
+    .burger-menu {
+        display: block;
+    }
 
     /* Стили для выезжающего мобильного меню */
     .nav-mobile-container {
@@ -372,8 +384,8 @@ footer a:hover {
         right: 0; /* Показываем меню */
     }
 
-    .nav-mobile-container ul {
-        list-style: none;
+    /* Стили для элементов внутри мобильного меню */
+    .nav-mobile-container .main-nav ul {
         flex-direction: column;
         align-items: center;
         gap: 30px;
@@ -381,28 +393,12 @@ footer a:hover {
         text-align: center;
     }
     
-    .nav-mobile-container a {
+    .nav-mobile-container .main-nav a {
         font-size: 1.2rem;
     }
-    
-    /* Скрываем основную навигацию и переключатель языков на десктопе */
-    .main-nav,
-    .lang-switcher {
-        display: none;
-    }
 
-    /* Показываем бургер-кнопку */
-    .burger-menu {
-        display: block;
-    }
-    
-    /* Меняем иконку бургера на крестик, когда меню открыто */
-    .burger-menu.open i::before {
-        content: '\f00d';
-    }
-	
     /* Адаптация переключателя языков для мобильного меню */
-	.nav-mobile-container .lang-switcher {
+    .nav-mobile-container .lang-switcher {
         display: flex; /* Показываем его внутри мобильного меню */
         flex-direction: column;
         width: 80%;
@@ -426,5 +422,10 @@ footer a:hover {
 
     .nav-mobile-container .lang-switcher.open .lang-dropdown {
         max-height: 500px;
+    }
+
+    /* Меняем иконку бургера на крестик, когда меню открыто */
+    .burger-menu.open i::before {
+        content: '\f00d';
     }
 }

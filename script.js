@@ -1,95 +1,83 @@
-// Плавное появление элементов при прокрутке
-
 document.addEventListener("DOMContentLoaded", function() {
-    // Находим все элементы, которые хотим анимировать
+    // --- Анимация при прокрутке (без изменений) ---
     const animatedElements = document.querySelectorAll('.feature-card, .gallery-item');
-
-    // Настройки для Intersection Observer
-    const observerOptions = {
-        root: null, // отслеживаем относительно вьюпорта
-        rootMargin: '0px',
-        threshold: 0.1 // элемент считается видимым, если виден хотя бы на 10%
-    };
-
-    // Функция, которая будет вызываться, когда элемент появляется или исчезает
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
-            // Если элемент появился в области видимости
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Отключаем наблюдение за этим элементом после того, как он появился
                 observer.unobserve(entry.target);
             }
         });
     };
-
-    // Создаем и запускаем наблюдатель
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     animatedElements.forEach(el => observer.observe(el));
-});
 
-// --- Логика для выпадающего меню языков ---
-const langSwitcher = document.querySelector('.lang-switcher');
-const langButton = document.querySelector('.lang-button');
+    // --- НОВАЯ, ИСПРАВЛЕННАЯ ЛОГИКА ДЛЯ МЕНЮ ---
 
-if (langButton) {
-    langButton.addEventListener('click', (event) => {
-        // Предотвращаем "всплытие" события, чтобы клик по кнопке не закрывал меню сразу
-        event.stopPropagation(); 
-        langSwitcher.classList.toggle('open');
-    });
-}
+    const burgerButton = document.querySelector('.burger-menu');
+    
+    // Создаем контейнер для мобильного меню динамически
+    const mobileNavContainer = document.createElement('div');
+    mobileNavContainer.classList.add('nav-mobile-container');
+    document.body.appendChild(mobileNavContainer);
 
-// Закрываем меню, если кликнуть в любом другом месте на странице
-document.addEventListener('click', () => {
-    if (langSwitcher && langSwitcher.classList.contains('open')) {
-        langSwitcher.classList.remove('open');
+    // Находим оригинальные элементы на странице
+    const mainNav = document.querySelector('.main-nav');
+    const langSwitcher = document.querySelector('.lang-switcher');
+
+    // Клонируем их в мобильный контейнер
+    if (mainNav) {
+        mobileNavContainer.appendChild(mainNav.cloneNode(true));
     }
-});
+    if (langSwitcher) {
+        mobileNavContainer.appendChild(langSwitcher.cloneNode(true));
+    }
 
-// --- Логика для мобильного бургер-меню ---
-const burgerButton = document.querySelector('.burger-menu');
-// Создаем контейнер для мобильного меню динамически
-const mobileNavContainer = document.createElement('div');
-mobileNavContainer.classList.add('nav-mobile-container');
+    // Логика открытия/закрытия бургер-меню
+    if (burgerButton) {
+        burgerButton.addEventListener('click', () => {
+            mobileNavContainer.classList.toggle('open');
+            burgerButton.classList.toggle('open');
+        });
+    }
 
-// Клонируем навигацию и переключатель языков в мобильный контейнер
-const mainNav = document.querySelector('.main-nav');
-const langSwitcherDesktop = document.querySelector('.lang-switcher');
+    // Логика для выпадающего меню языков ВНУТРИ мобильного меню
+    const mobileLangSwitcher = mobileNavContainer.querySelector('.lang-switcher');
+    if (mobileLangSwitcher) {
+        const mobileLangButton = mobileLangSwitcher.querySelector('.lang-button');
+        mobileLangButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            mobileLangSwitcher.classList.toggle('open');
+        });
+    }
+    
+    // Логика для выпадающего меню языков на ДЕСКТОПЕ
+    if (langSwitcher) {
+        const desktopLangButton = langSwitcher.querySelector('.lang-button');
+        desktopLangButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            langSwitcher.classList.toggle('open');
+        });
+    }
 
-if (mainNav) {
-    mobileNavContainer.appendChild(mainNav.cloneNode(true));
-}
-if (langSwitcherDesktop) {
-    mobileNavContainer.appendChild(langSwitcherDesktop.cloneNode(true));
-}
-
-// Добавляем созданный контейнер в body
-document.body.appendChild(mobileNavContainer);
-
-// Логика открытия/закрытия
-if (burgerButton) {
-    burgerButton.addEventListener('click', () => {
-        mobileNavContainer.classList.toggle('open');
-        burgerButton.classList.toggle('open');
+    // Закрываем ОБА выпадающих меню при клике вне их
+    document.addEventListener('click', () => {
+        if (langSwitcher && langSwitcher.classList.contains('open')) {
+            langSwitcher.classList.remove('open');
+        }
+        if (mobileLangSwitcher && mobileLangSwitcher.classList.contains('open')) {
+            mobileLangSwitcher.classList.remove('open');
+        }
     });
-}
 
-// Логика для выпадающего меню языков ВНУТРИ мобильного меню
-const mobileLangSwitcher = mobileNavContainer.querySelector('.lang-switcher');
-const mobileLangButton = mobileNavContainer.querySelector('.lang-button');
-
-if (mobileLangButton) {
-    mobileLangButton.addEventListener('click', (event) => {
-        event.stopPropagation();
-        mobileLangSwitcher.classList.toggle('open');
-    });
-}
-
-// Закрываем мобильное меню при клике на ссылку
-mobileNavContainer.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileNavContainer.classList.remove('open');
-        burgerButton.classList.remove('open');
+    // Закрываем бургер-меню при клике на любую ссылку внутри него
+    mobileNavContainer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileNavContainer.classList.contains('open')) {
+                mobileNavContainer.classList.remove('open');
+                burgerButton.classList.remove('open');
+            }
+        });
     });
 });

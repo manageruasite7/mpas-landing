@@ -305,7 +305,7 @@ footer a:hover {
 }
 
 .lang-link.active {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color);max-width: 768px
     color: var(--white);
     font-weight: 700;
 }
@@ -350,22 +350,11 @@ footer a:hover {
         font-size: 1.8rem;
     }
 
-    /* Скрываем основную навигацию и переключатель языков на десктопе */
-    .main-nav,
-    .lang-switcher {
-        display: none;
-    }
-
-    /* Показываем бургер-кнопку */
-    .burger-menu {
-        display: block;
-    }
-
-    /* Стили для выезжающего мобильного меню */
-    .nav-mobile-container {
+    /* Скрываем навигацию и языки, которые находятся в .nav-container */
+    .nav-container {
         position: fixed;
         top: 0;
-        right: -100%; /* Скрыто за экраном */
+        right: -100%; /* Скрыто за экраном по умолчанию */
         width: 250px;
         height: 100%;
         background: var(--white);
@@ -380,36 +369,39 @@ footer a:hover {
         z-index: 1000;
     }
 
-    .nav-mobile-container.open {
-        right: 0; /* Показываем меню */
+    /* Когда бургер нажат, показываем меню */
+    .nav-container.open {
+        right: 0;
     }
 
-    /* Стили для элементов внутри мобильного меню */
-    .nav-mobile-container .main-nav ul {
+    /* Показываем бургер-кнопку */
+    .burger-menu {
+        display: block;
+    }
+
+    /* Стили для элементов внутри выехавшего меню */
+    .nav-container nav ul {
         flex-direction: column;
         align-items: center;
         gap: 30px;
-        width: 100%;
-        text-align: center;
     }
     
-    .nav-mobile-container .main-nav a {
+    .nav-container nav a {
         font-size: 1.2rem;
     }
-
-    /* Адаптация переключателя языков для мобильного меню */
-    .nav-mobile-container .lang-switcher {
-        display: flex; /* Показываем его внутри мобильного меню */
+    
+    .nav-container .lang-switcher {
+        display: flex;
         flex-direction: column;
         width: 80%;
     }
 
-    .nav-mobile-container .lang-button {
+    .nav-container .lang-button {
         width: 100%;
         justify-content: center;
     }
 
-    .nav-mobile-container .lang-dropdown {
+    .nav-container .lang-dropdown {
         position: static;
         width: 100%;
         box-shadow: none;
@@ -420,7 +412,7 @@ footer a:hover {
         transition: max-height 0.4s ease-in-out;
     }
 
-    .nav-mobile-container .lang-switcher.open .lang-dropdown {
+    .nav-container .lang-switcher.open .lang-dropdown {
         max-height: 500px;
     }
 

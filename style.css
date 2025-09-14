@@ -330,3 +330,57 @@ footer a:hover {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- Стили для бургер-меню --- */
+.burger-menu {
+    display: none; /* Скрыто по умолчанию на десктопах */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+    z-index: 1001; /* Поверх всего */
+}
+
+/* --- Адаптивность для навигации --- */
+@media (max-width: 768px) {
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Скрываем за правым краем экрана */
+        width: 250px;
+        height: 100%;
+        background: var(--white);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        transition: right 0.4s ease-in-out;
+        padding-top: 60px;
+    }
+
+    .nav-container.open {
+        right: 0; /* Показываем меню */
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    header nav a {
+        font-size: 1.2rem;
+    }
+
+    .burger-menu {
+        display: block; /* Показываем бургер на мобильных */
+    }
+    
+    /* Меняем иконку бургера на крестик, когда меню открыто */
+    .burger-menu.open i::before {
+        content: '\f00d'; /* Код иконки крестика (fa-times) */
+    }
+}

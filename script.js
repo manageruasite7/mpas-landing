@@ -46,3 +46,22 @@ document.addEventListener('click', () => {
         langSwitcher.classList.remove('open');
     }
 });
+
+// --- Логика для мобильного бургер-меню ---
+const burgerButton = document.querySelector('.burger-menu');
+const navContainer = document.querySelector('.nav-container');
+
+if (burgerButton && navContainer) {
+    burgerButton.addEventListener('click', () => {
+        navContainer.classList.toggle('open');
+        burgerButton.classList.toggle('open');
+    });
+
+    // Закрываем меню при клике на ссылку в нем
+    navContainer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navContainer.classList.remove('open');
+            burgerButton.classList.remove('open');
+        });
+    });
+}

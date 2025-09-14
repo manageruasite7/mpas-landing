@@ -62,39 +62,42 @@ header .container {
     align-items: center;
 }
 
-header .logo {
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
     text-decoration: none;
 }
 
-header nav {
+.logo-icon {
+    width: 48px;
+    height: 48px;
+}
+
+.nav-container {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-header nav ul {
+
+.main-nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
 }
 
-header nav a {
+.main-nav a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
-header nav a:hover {
+.main-nav a:hover {
     color: var(--primary-color);
-}
-
-.nav-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 20px;
 }
 
 /* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
@@ -146,7 +149,6 @@ header nav a:hover {
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Стили для анимации */
     opacity: 0;
     transform: translateY(20px);
 }
@@ -185,7 +187,6 @@ header nav a:hover {
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
-    /* Стили для анимации */
     opacity: 0;
     transform: scale(0.95);
 }
@@ -231,22 +232,9 @@ footer a:hover {
     text-decoration: underline;
 }
 
-
-/* --- Стили для логотипа с иконкой --- */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Расстояние между иконкой и текстом */
-}
-
-.logo-icon {
-    width: 48px;  /* Размер можно подобрать, 48px - хороший вариант */
-    height: 48px;
-}
-
 /* --- Стили для переключателя языков --- */
 .lang-switcher {
-    position: relative; /* Необходимо для позиционирования выпадающего списка */
+    position: relative;
 }
 
 .lang-button {
@@ -268,7 +256,6 @@ footer a:hover {
     transition: transform 0.3s ease;
 }
 
-/* Анимация стрелки при открытии меню */
 .lang-switcher.open .lang-button i.fa-chevron-down {
     transform: rotate(180deg);
 }
@@ -284,15 +271,12 @@ footer a:hover {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    
-    /* Скрываем меню по умолчанию */
     opacity: 0;
     transform: translateY(10px);
     visibility: hidden;
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
-/* Показываем меню при добавлении класса .open */
 .lang-switcher.open .lang-dropdown {
     opacity: 1;
     transform: translateY(0);
@@ -311,15 +295,43 @@ footer a:hover {
 }
 
 .lang-link.active {
-    background-color: var(--primary-color);max-width: 768px
+    background-color: var(--primary-color);
     color: var(--white);
     font-weight: 700;
 }
 
-/* --- Дополнительная адаптивность для сетки возможностей --- */
+/* --- Стили для бургер-меню (скрыто на десктопе) --- */
+.burger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
 @media (max-width: 992px) {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Скрываем десктопную навигацию и показываем бургер */
+    .nav-container {
+        display: none;
+    }
+    .burger-menu {
+        display: block;
     }
 }
 
@@ -329,101 +341,62 @@ footer a:hover {
     }
 }
 
-/* --- Стили для бургер-меню --- */
-.burger-menu {
-    display: none; /* Скрыто по умолчанию на десктопах */
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    cursor: pointer;
-    z-index: 1001; /* Поверх всего */
+/* --- Стили для мобильного меню (появляется при необходимости) --- */
+.mobile-nav-container {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Скрыто за экраном */
+    width: 250px;
+    height: 100%;
+    background: var(--white);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    transition: right 0.4s ease-in-out;
+    padding: 60px 20px;
+    z-index: 1000;
 }
 
-/* --- НАЧАЛО ИСПРАВЛЕНИЯ --- */
-/* Скрываем мобильный контейнер по умолчанию на больших экранах */
-.nav-mobile-container {
-    display: none;
+.mobile-nav-container.open {
+    right: 0; /* Показываем меню */
 }
-/* --- КОНЕЦ ИСПРАВЛЕНИЯ --- */
 
-/* --- АДАПТИВНОСТЬ --- */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-    h2 {
-        font-size: 1.8rem;
-    }
+.mobile-nav-container .main-nav ul {
+    flex-direction: column;
+    text-align: center;
+}
 
-    /* Скрываем навигацию и языки, которые находятся в .nav-container */
-    .nav-container {
-        position: fixed;
-        top: 0;
-        right: -100%; /* Скрыто за экраном по умолчанию */
-        width: 250px;
-        height: 100%;
-        background: var(--white);
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        transition: right 0.4s ease-in-out;
-        padding-top: 60px;
-        z-index: 1000;
-    }
+.mobile-nav-container .main-nav a {
+    font-size: 1.2rem;
+}
 
-    /* Когда бургер нажат, показываем меню */
-    .nav-container.open {
-        right: 0;
-    }
+.mobile-nav-container .lang-switcher {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
-    /* Показываем бургер-кнопку */
-    .burger-menu {
-        display: block;
-    }
+.mobile-nav-container .lang-button {
+    width: 100%;
+    justify-content: center;
+}
 
-    /* Стили для элементов внутри выехавшего меню */
-    .nav-container nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-    
-    .nav-container nav a {
-        font-size: 1.2rem;
-    }
-    
-    .nav-container .lang-switcher {
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-    }
+.mobile-nav-container .lang-dropdown {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+}
 
-    .nav-container .lang-button {
-        width: 100%;
-        justify-content: center;
-    }
+.mobile-nav-container .lang-switcher.open .lang-dropdown {
+    max-height: 500px;
+}
 
-    .nav-container .lang-dropdown {
-        position: static;
-        width: 100%;
-        box-shadow: none;
-        border-radius: 0;
-        max-height: 0;
-        opacity: 1;
-        visibility: visible;
-        transition: max-height 0.4s ease-in-out;
-    }
-
-    .nav-container .lang-switcher.open .lang-dropdown {
-        max-height: 500px;
-    }
-
-    /* Меняем иконку бургера на крестик, когда меню открыто */
-    .burger-menu.open i::before {
-        content: '\f00d';
-    }
+.burger-menu.open i::before {
+    content: '\f00d'; /* Крестик */
 }

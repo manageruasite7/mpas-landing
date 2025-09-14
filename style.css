@@ -1,0 +1,332 @@
+/* --- ОБЩИЕ СТИЛИ --- */
+:root {
+    --primary-color: #0078D4;
+    --secondary-color: #2c3e50;
+    --background-color: #f4f7f6;
+    --text-color: #333;
+    --light-gray: #ecf0f1;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.7;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+section {
+    padding: 60px 0;
+}
+
+/* --- ШАПКА --- */
+header {
+    background: var(--white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+}
+
+/* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
+#hero {
+    background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url(https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80) center/cover no-repeat;
+    color: var(--white);
+    text-align: center;
+    padding: 100px 0;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    color: var(--white);
+}
+
+#hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #005a9e;
+    transform: scale(1.05);
+}
+
+/* --- ВОЗМОЖНОСТИ (FEATURES) --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Стили для анимации */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.feature-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+}
+
+.feature-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* --- ГАЛЕРЕЯ --- */
+#gallery {
+    background-color: var(--light-gray);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    /* Стили для анимации */
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.gallery-item.visible img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.gallery-item img:hover {
+    transform: scale(1.03);
+}
+
+/* --- СКАЧАТЬ --- */
+#download {
+    text-align: center;
+}
+
+#download p {
+    margin-bottom: 30px;
+}
+
+.system-req {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* --- ПОДВАЛ --- */
+footer {
+    background: var(--secondary-color);
+    color: #ccc;
+    text-align: center;
+    padding: 30px 0;
+}
+
+footer a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- АДАПТИВНОСТЬ --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    header .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* --- Стили для логотипа с иконкой --- */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Расстояние между иконкой и текстом */
+}
+
+.logo-icon {
+    width: 48px;  /* Размер можно подобрать, 48px - хороший вариант */
+    height: 48px;
+}
+
+/* --- Стили для переключателя языков --- */
+.lang-switcher {
+    position: relative; /* Необходимо для позиционирования выпадающего списка */
+}
+
+.lang-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--light-gray);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.lang-button i.fa-chevron-down {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+/* Анимация стрелки при открытии меню */
+.lang-switcher.open .lang-button i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background: var(--white);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 150px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    
+    /* Скрываем меню по умолчанию */
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Показываем меню при добавлении класса .open */
+.lang-switcher.open .lang-dropdown {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.lang-link {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.lang-link:hover {
+    background-color: var(--light-gray);
+}
+
+.lang-link.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: 700;
+}
+
+/* --- Дополнительная адаптивность для сетки возможностей --- */
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}

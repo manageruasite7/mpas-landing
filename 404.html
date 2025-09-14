@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена (404) - MPas</title>
+    <!-- Подключаем основной файл стилей, чтобы страница выглядела так же -->
+    <link rel="stylesheet" href="/style.css"> 
+    <style>
+        /* Дополнительные стили только для этой страницы */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .error-container {
+            max-width: 500px;
+        }
+        .error-code {
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        .error-message {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        .error-description {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-message">Страница не найдена</div>
+        <p class="error-description">К сожалению, страница, которую вы ищете, не существует или была перемещена.</p>
+        
+        <!-- Кнопка "Вернуться назад" -->
+        <a href="javascript:history.back()" class="cta-button">Вернуться назад</a>
+    </div>
+</body>
+</html>

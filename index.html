@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPas - Ваш защищенный менеджер заметок, задач и финансов</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключаем шрифты и иконки -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+			<img src="img/icon.png" alt="MPas Logo" class="logo-icon">
+			<span>MPas</span>
+			</a>
+            <nav>
+                <ul>
+                    <li><a href="#features">Возможности</a></li>
+                    <li><a href="#gallery">Скриншоты</a></li>
+                    <li><a href="#download">Скачать</a></li>
+					
+					<div class="lang-switcher">
+						<button class="lang-button">
+							<i class="fas fa-globe"></i>
+							<span>RU</span> <!-- Текущий язык -->
+							<i class="fas fa-chevron-down"></i>
+						</button>
+						<div class="lang-dropdown">
+							<i class="fas fa-globe"></i>
+							<a href="index.html" class="lang-link active">RU</a>
+							<a href="/ua/index.html" class="lang-link">UA</a>
+							<a href="/en/index.html" class="lang-link">EN</a>
+							<a href="/de/index.html" class="lang-link">DE</a>
+							<a href="/es/index.html" class="lang-link">ES</a>
+							<a href="/fr/index.html" class="lang-link">FR</a>
+							<a href="/it/index.html" class="lang-link">IT</a>
+						<!-- Добавьте сюда ссылки на другие языки по мере их готовности -->
+						</div>
+					</div>	
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Организуйте всё. Защитите всё.</h1>
+                <p>MPas — это универсальный оффлайн-менеджер для ваших заметок, таблиц, задач, календаря и финансов с надежным шифрованием и доступом по мастер-паролю.</p>
+                <a href="#download" class="cta-button">Скачать MPas v2.9.0</a>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <h2>Ключевые возможности</h2>
+					<div class="features-grid">
+						<!-- Ряд 1 -->
+						<div class="feature-card">
+							<i class="fas fa-sticky-note"></i>
+							<h3>Заметки</h3>
+							<p>Создавайте иерархические текстовые заметки с полным форматированием, внутренними ссылками и настройкой внешнего вида дерева.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-tasks"></i>
+							<h3>Задачи</h3>
+							<p>Менеджер задач с иерархией, приоритетами, сроками, статусами и автоматическим отслеживанием прогресса и просрочки.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-calendar-alt"></i>
+							<h3>Календарь</h3>
+							<p>Ведите ежедневные заметки и отслеживайте ежегодные события. Удобный архив для быстрого поиска по датам.</p>
+						</div>
+						
+						<!-- Ряд 2 -->
+						<div class="feature-card">
+							<i class="fas fa-table"></i>
+							<h3>Таблицы</h3>
+							<p>Работайте с табличными данными как в Excel. Управляйте ячейками, меняйте размеры и используйте буфер обмена.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-wallet"></i>
+							<h3>Финансы</h3>
+							<p>Управляйте счетами в разных валютах, отслеживайте доходы и расходы по категориям, формируйте отчеты за любой период.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-bell"></i>
+							<h3>Напоминания</h3>
+							<p>Гибкий планировщик для создания одноразовых и повторяющихся событий с ненавязчивой системой пассивных уведомлений.</p>
+						</div>
+
+						<!-- Ряд 3 -->
+						<div class="feature-card">
+							<i class="fas fa-shield-alt"></i>
+							<h3>Безопасность и Оффлайн</h3>
+							<p>Все данные шифруются алгоритмом AES-GCM вашим мастер-паролем. Программа работает полностью оффлайн, без доступа к интернету.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-save"></i>
+							<h3>Резервное копирование</h3>
+							<p>Встроенная функция создания ZIP-архива со всеми вашими данными и конфигурацией, а также система напоминаний о бэкапах.</p>
+						</div>
+						<div class="feature-card">
+							<i class="fas fa-search"></i>
+							<h3>Глобальный поиск</h3>
+							<p>Мгновенно находите нужную информацию по названию или содержимому во всех ваших заметках с помощью быстрого поиска по всему хранилищу.</p>
+						</div>
+					</div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2>Галерея интерфейса</h2>
+                <div class="gallery-grid">
+                    <!-- ЗАМЕНИТЕ ЭТИ ФАЙЛЫ НА ВАШИ СКРИНШОТЫ В ПАПКЕ /img -->
+					<!-- Главное правило: Все скриншоты должны быть одинаковой пропорции (соотношения сторон). 
+					1920x1080 пикселей. Идеальная пропорция (для всех картинок одинакова должна быть): 16:9 -->
+                    <!-- Ряд 1 -->
+					<div class="gallery-item"><img src="img/screenshot1.png" alt="Скриншот модуля Заметки"></div>
+					<div class="gallery-item"><img src="img/screenshot2.png" alt="Скриншот модуля Задачи"></div>
+					<div class="gallery-item"><img src="img/screenshot3.png" alt="Скриншот модуля Финансы"></div>
+					<!-- Ряд 2 -->
+					<div class="gallery-item"><img src="img/screenshot4.png" alt="Скриншот модуля Календарь"></div>
+					<div class="gallery-item"><img src="img/screenshot5.png" alt="Скриншот модуля Таблицы"></div>
+					<div class="gallery-item"><img src="img/screenshot6.png" alt="Скриншот окна Настроек"></div>
+					<!-- ... и так далее, сколько нужно ... -->
+                </div>
+            </div>
+        </section>
+
+        <section id="download">
+            <div class="container">
+                <h2>Готовы навести порядок в своих делах?</h2>
+                <p>Скачайте MPas бесплатно и начните пользоваться уже сегодня.</p>
+                <a href="#" class="cta-button">Скачать MPas v2.9.0 для Windows</a>
+                <p class="system-req">Поддерживается Windows 10/11 (x64)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MPas. Все права защищены.</p>
+            <p>Связаться с разработчиком: <a href="https://t.me/measyprograms" target="_blank">Telegram-канал</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -49,19 +49,47 @@ document.addEventListener('click', () => {
 
 // --- Логика для мобильного бургер-меню ---
 const burgerButton = document.querySelector('.burger-menu');
-const navContainer = document.querySelector('.nav-container');
+// Создаем контейнер для мобильного меню динамически
+const mobileNavContainer = document.createElement('div');
+mobileNavContainer.classList.add('nav-mobile-container');
 
-if (burgerButton && navContainer) {
+// Клонируем навигацию и переключатель языков в мобильный контейнер
+const mainNav = document.querySelector('.main-nav');
+const langSwitcherDesktop = document.querySelector('.lang-switcher');
+
+if (mainNav) {
+    mobileNavContainer.appendChild(mainNav.cloneNode(true));
+}
+if (langSwitcherDesktop) {
+    mobileNavContainer.appendChild(langSwitcherDesktop.cloneNode(true));
+}
+
+// Добавляем созданный контейнер в body
+document.body.appendChild(mobileNavContainer);
+
+// Логика открытия/закрытия
+if (burgerButton) {
     burgerButton.addEventListener('click', () => {
-        navContainer.classList.toggle('open');
+        mobileNavContainer.classList.toggle('open');
         burgerButton.classList.toggle('open');
     });
+}
 
-    // Закрываем меню при клике на ссылку в нем
-    navContainer.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            navContainer.classList.remove('open');
-            burgerButton.classList.remove('open');
-        });
+// Логика для выпадающего меню языков ВНУТРИ мобильного меню
+const mobileLangSwitcher = mobileNavContainer.querySelector('.lang-switcher');
+const mobileLangButton = mobileNavContainer.querySelector('.lang-button');
+
+if (mobileLangButton) {
+    mobileLangButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        mobileLangSwitcher.classList.toggle('open');
     });
 }
+
+// Закрываем мобильное меню при клике на ссылку
+mobileNavContainer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileNavContainer.classList.remove('open');
+        burgerButton.classList.remove('open');
+    });
+});
